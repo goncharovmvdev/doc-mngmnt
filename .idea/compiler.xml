@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="doc-mngmnt-service" />
+        <module name="doc-mngmnt-security" />
         <module name="doc-mngmnt-ddl" />
         <module name="doc-mngmnt-repository" />
         <module name="doc-mngmnt-entity" />
