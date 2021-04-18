@@ -1,0 +1,4 @@
+# Project exclude paths
+/doc-mngmnt-ddl/target/
+/doc-mngmnt-entity/target/
+/doc-mngmnt-repository/target/
