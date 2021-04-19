@@ -22,7 +22,6 @@
         <module>doc-mngmnt-repository</module>
         <module>doc-mngmnt-service</module>
         <module>doc-mngmnt-rest</module>
-        <module>doc-mngmnt-projection</module>
         <module>doc-mngmnt-security</module>
         <module>doc-mngmnt-dto</module>
     </modules>

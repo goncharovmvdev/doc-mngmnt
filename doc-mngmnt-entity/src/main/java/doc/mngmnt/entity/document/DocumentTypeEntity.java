@@ -1,13 +1,13 @@
 package doc.mngmnt.entity.document;
 
 import doc.mngmnt.entity.audit.PersistOpsAuthorRecordingEntity;
-import doc.mngmnt.entity.user.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -23,7 +23,8 @@ public class DocumentTypeEntity extends PersistOpsAuthorRecordingEntity<Long> {
     private Long id;
 
     @Basic(optional = false)
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
+    @NotNull
     private String name;
 
     @ManyToMany(cascade = {CascadeType.ALL})

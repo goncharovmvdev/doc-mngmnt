@@ -1,0 +1,7 @@
+service:
+  user:
+    account-non-expired: true
+    account-non-locked: true
+    credentials-non-expired: true
+    enabled: true
+    default-role-names: ROLE_USER

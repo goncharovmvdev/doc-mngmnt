@@ -12,7 +12,8 @@ import org.hibernate.envers.Audited;
 import org.springframework.data.history.RevisionMetadata;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -34,18 +35,18 @@ public class DocumentEntity extends PersistOpsAuthorRecordingEntity<Long> {
 
     @Basic(optional = false)
     @Column(name = "title", nullable = false)
-    @NotNull
+    @NotBlank
     private String title;
 
     @Basic(optional = false)
     @Column(name = "description", nullable = false)
-    @NotNull
+    @NotBlank
     private String description;
 
     @Basic
     @Column(name = "priority")
     @Enumerated(value = EnumType.STRING)
-    private Importance priority;
+    private Importance importance;
 
     public static enum Importance {
         LOW, MEDIUM, HIGH
@@ -65,6 +66,7 @@ public class DocumentEntity extends PersistOpsAuthorRecordingEntity<Long> {
     @JoinTable(name = "\"user_document\"",
         joinColumns = {@JoinColumn(name = "document_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")})
+    @NotEmpty
     private Set<UserEntity> ownerIds;
 
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)

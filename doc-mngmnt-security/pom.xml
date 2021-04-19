@@ -10,4 +10,27 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>doc-mngmnt-security</artifactId>
 
+    <dependencies>
+        <!-- Entity -->
+        <dependency>
+            <groupId>doc-mngmnt-parent</groupId>
+            <artifactId>doc-mngmnt-entity</artifactId>
+            <version>CURRENT</version>
+        </dependency>
+
+        <!-- Repository -->
+        <dependency>
+            <groupId>doc-mngmnt-parent</groupId>
+            <artifactId>doc-mngmnt-repository</artifactId>
+            <version>CURRENT</version>
+        </dependency>
+
+        <!-- Spring security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+    </dependencies>
+
 </project>

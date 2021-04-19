@@ -1,0 +1,28 @@
+{
+  "properties": [
+    {
+      "name": "service.user.account-non-expired",
+      "type": "java.lang.Boolean",
+      "description": "Defines if account isn't expired by default."
+    },
+    {
+      "name": "service.user.account-non-locked",
+      "type": "java.lang.Boolean",
+      "description": "Defines if account isn't locked by default."
+    },
+    {
+      "name": "service.user.credentials-non-expired",
+      "type": "java.lang.Boolean",
+      "description": "Defines if credentials aren't expired by default."
+    },
+    {
+      "name": "service.user.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Defines if user is enabled by default."
+    },
+    {
+      "name": "service.user.default-role-names",
+      "type": "java.util.Set<java.lang.String>",
+      "description": "Default roles, assigned to user during registration."
+    }
+  ] }
