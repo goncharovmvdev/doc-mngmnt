@@ -2,6 +2,7 @@ package doc.mngmnt.entity.user;
 
 import doc.mngmnt.entity.audit.PersistOpsAuthorRecordingEntity;
 import doc.mngmnt.entity.document.DocumentEntity;
+import doc.mngmnt.entity.document.DocumentVersionEntity;
 import doc.mngmnt.entity.security.RoleEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -74,8 +75,14 @@ public class UserEntity extends PersistOpsAuthorRecordingEntity<Long> {
     private Set<RoleEntity> roles;
 
     @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "\"user_document\"",
+    @JoinTable(name = "user_document",
         joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "document_id", referencedColumnName = "id")})
     private Set<DocumentEntity> documents;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "user_document_version",
+        joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "document_version_id", referencedColumnName = "id")})
+    private Set<DocumentVersionEntity> documentsVersions;
 }

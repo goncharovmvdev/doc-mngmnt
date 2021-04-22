@@ -26,9 +26,9 @@ public class RoleEntity extends PersistOpsAuthorRecordingEntity<Long> {
     private Long id;
 
     @Basic(optional = false)
-    @Column(name = "role", unique = true, nullable = false)
+    @Column(name = "name", unique = true, nullable = false)
     @NotBlank
-    private String role;
+    private String name;
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "\"user_role\"",

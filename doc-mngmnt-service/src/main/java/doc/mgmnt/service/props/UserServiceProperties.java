@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 // TODO: 19.04.2021 что делать с @EnableConfigurationProperties? - мне не нравится подход с компонентом
-@Component
+/*@Component
 @ConfigurationProperties(prefix = "service.user")
 @ConstructorBinding
 @Validated
@@ -25,4 +25,4 @@ public class UserServiceProperties {
     @NotNull
     private final Boolean enabled;
     private final Set<String> defaultRoleNames;
-}
+}*/

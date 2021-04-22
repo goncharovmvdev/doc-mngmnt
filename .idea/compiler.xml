@@ -9,20 +9,29 @@
         <outputRelativeToContentRoot value="true" />
         <module name="doc-mngmnt-service" />
         <module name="doc-mngmnt-security" />
-        <module name="doc-mngmnt-ddl" />
         <module name="doc-mngmnt-repository" />
         <module name="doc-mngmnt-entity" />
+        <module name="doc-mngmnt-runner" />
         <module name="doc-mngmnt-rest" />
         <module name="doc-mngmnt-dto" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="doc-mngmnt-ddl" target="11" />
+      <module name="doc-mngmnt-firebase" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="doc-mngmnt-ddl" options="" />
+      <module name="doc-mngmnt-dto" options="" />
       <module name="doc-mngmnt-entity" options="" />
       <module name="doc-mngmnt-parent" options="" />
       <module name="doc-mngmnt-repository" options="" />
+      <module name="doc-mngmnt-rest" options="" />
+      <module name="doc-mngmnt-runner" options="" />
+      <module name="doc-mngmnt-security" options="" />
+      <module name="doc-mngmnt-service" options="" />
     </option>
   </component>
 </project>

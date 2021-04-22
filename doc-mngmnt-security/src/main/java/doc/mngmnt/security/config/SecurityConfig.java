@@ -27,11 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity webSecurity) {
-        // TODO: 19.04.2021 чето прописать здесь
-        webSecurity
-            .ignoring()
-            .and()
-            .ignoring();
+
     }
 
     @Override
@@ -44,7 +40,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .csrf().disable()
             .cors()
             .and()
+            .httpBasic().disable()
+            .formLogin().disable()
             .authorizeRequests()
-            .anyRequest().authenticated();
+            .antMatchers("/h2-console/**").permitAll()
+            .anyRequest().permitAll();
     }
 }

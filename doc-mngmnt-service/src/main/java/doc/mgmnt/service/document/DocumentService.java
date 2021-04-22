@@ -11,6 +11,5 @@ public interface DocumentService {
 
     void delete(Long id);
 
-    // TODO: 19.04.2021 что значит просмотр списка?
-    SaveDocumentDto find();
+    SaveDocumentDto findById(Long id);
 }

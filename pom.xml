@@ -16,7 +16,6 @@
     <name>doc-mngmnt</name>
 
     <modules>
-        <module>doc-mngmnt-ddl</module>
         <module>doc-mngmnt-entity</module>
         <module>doc-mngmnt-parent</module>
         <module>doc-mngmnt-repository</module>
@@ -24,5 +23,6 @@
         <module>doc-mngmnt-rest</module>
         <module>doc-mngmnt-security</module>
         <module>doc-mngmnt-dto</module>
+        <module>doc-mngmnt-runner</module>
     </modules>
 </project>

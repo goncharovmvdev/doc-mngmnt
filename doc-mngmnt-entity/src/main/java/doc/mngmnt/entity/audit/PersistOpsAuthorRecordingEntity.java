@@ -12,18 +12,12 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
-
-// TODO: 13.04.2021 уточнить по @apiNote
-/* 13.04.2021 https://www.youtube.com/watch?v=W1Rtn28lHU8 - про enverse(вроде хорошо рассказали).
-    https://github.com/Denuwanhh/spring-audit-demo - пример проекта с гита. */
+import java.time.ZonedDateTime;
 
 /**
  * Abstract class for recording persist ops authors.
  *
  * @param <ID> type of {@code id} of auditing entity (type of managing user's id).
- * @apiNote вот этот класс (вроде как) нужен - enverse не смотрит, кто апдейтил.
- * Всякие поля с {@link CreatedDate} и {@link LastModifiedDate} не нужны -
- * эта информация хранится в таблице REVINFO (это можно достать через {@link org.springframework.data.history.Revision}).
  */
 @MappedSuperclass
 @EntityListeners({AuditingEntityListener.class})
@@ -31,13 +25,23 @@ import javax.persistence.MappedSuperclass;
 @Setter
 public abstract class PersistOpsAuthorRecordingEntity<ID> {
     @Basic(optional = false)
+    @Column(name = "created_by",updatable = false)
     @CreatedBy
-    @Column(name = "created_by", nullable = false, updatable = false)
-    public ID createdBy;
+    private ID createdBy;
 
     @Basic(optional = false)
+    @Column(name = "created", nullable = false, updatable = false)
+    @CreatedDate
+    private ZonedDateTime created;
+
+    @Basic(optional = false)
+    @Column(name = "updated_by")
     @LastModifiedBy
-    @Column(name = "updated_by", nullable = false)
-    public ID updatedBy;
+    private ID updatedBy;
+
+    @Basic(optional = false)
+    @Column(name = "updated", nullable = false)
+    @LastModifiedDate
+    private ZonedDateTime updated;
 }
 

@@ -9,5 +9,5 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 
     List<RoleEntity> findAll();
 
-    RoleEntity findOneByRole(String role);
+    RoleEntity findOneByName(String name);
 }

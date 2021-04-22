@@ -8,8 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.hibernate.envers.Audited;
-import org.springframework.data.history.RevisionMetadata;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -18,11 +16,9 @@ import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-/* TODO: 18.04.2021 (организационный вопрос) как мы понимаем, что у документа надо обновить версию?
-    Что не надо аудировать? (@NotAudited) */
+// TODO: 21.04.2021 что считать за изменение в документе.
 @Entity
-@Table(name = "\"document\"")
-@Audited
+@Table(name = "document")
 @Data
 @EqualsAndHashCode(callSuper = false, of = {"id"})
 @NoArgsConstructor
@@ -43,8 +39,17 @@ public class DocumentEntity extends PersistOpsAuthorRecordingEntity<Long> {
     @NotBlank
     private String description;
 
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+    private Set<FileEntity> files;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "document_type_document",
+        joinColumns = {@JoinColumn(name = "document_id", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "document_type_id", referencedColumnName = "id")})
+    private Set<DocumentTypeEntity> types;
+
     @Basic
-    @Column(name = "priority")
+    @Column(name = "importance")
     @Enumerated(value = EnumType.STRING)
     private Importance importance;
 
@@ -57,21 +62,26 @@ public class DocumentEntity extends PersistOpsAuthorRecordingEntity<Long> {
     private CatalogEntity catalog;
 
     @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "\"document_type_document\"",
-        joinColumns = {@JoinColumn(name = "document_id", referencedColumnName = "id")},
-        inverseJoinColumns = {@JoinColumn(name = "document_type_id", referencedColumnName = "id")})
-    private Set<DocumentTypeEntity> types;
-
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "\"user_document\"",
+    @JoinTable(name = "user_document",
         joinColumns = {@JoinColumn(name = "document_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")})
-    @NotEmpty
     private Set<UserEntity> ownerIds;
 
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<FileEntity> files;
+    @OneToMany(mappedBy = "id", orphanRemoval = true, cascade = {CascadeType.ALL})
+    private Set<DocumentVersionEntity> versions;
 
-    @Transient
-    private RevisionMetadata<Long> version;
+    // TODO: 21.04.2021 ????
+    @PrePersist
+    protected void prePersistSetVersions() {
+        saveCurrentVersion();
+    }
+
+    @PreUpdate
+    protected void preUpdateSetVersions() {
+        saveCurrentVersion();
+    }
+
+    private void saveCurrentVersion() {
+        this.versions.add(new DocumentVersionEntity(this));
+    }
 }

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -55,8 +56,21 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     @Override
-    public SaveDocumentDto find() {
-        return null;
+    public SaveDocumentDto findById(Long id) {
+        DocumentEntity documentEntity = documentRepository.findById(id).get();
+
+        SaveDocumentDto saveDocumentDto = new SaveDocumentDto();
+        saveDocumentDto.setTitle(documentEntity.getTitle());
+        saveDocumentDto.setDescription(documentEntity.getDescription());
+        // TODO: 19.04.2021
+        saveDocumentDto.setFiles(new HashSet<>());
+        saveDocumentDto.setCatalogId(documentEntity.getCatalog().getId());
+        saveDocumentDto.setTypeNames(documentEntity.getTypes().stream()
+            .map(DocumentTypeEntity::getName)
+            .collect(Collectors.toSet()));
+
+
+        return saveDocumentDto;
     }
 
     private DocumentEntity mapSaveDocumentDtoToEntity(SaveDocumentDto saveDocumentDto) {

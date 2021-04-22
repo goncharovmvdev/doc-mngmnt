@@ -9,7 +9,7 @@
         <parent>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-parent</artifactId>
-            <version>2.4.5</version>
+            <version>2.3.4.RELEASE</version>
         </parent>
         -->
 
@@ -31,6 +31,10 @@
 
         <!-- Maven plugin -->
         <maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>
+
+        <!-- Firebase -->
+        <firebase.version>7.1.1</firebase.version>
+        <simple.flatmapper.version>8.2.3</simple.flatmapper.version>
     </properties>
 
     <dependencyManagement>
@@ -43,86 +47,20 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--
+
+            <!-- Firebase -->
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-jpa</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <groupId>com.google.firebase</groupId>
+                <artifactId>firebase-admin</artifactId>
+                <version>${firebase.version}</version>
             </dependency>
 
+            <!-- Simple flat mapper -->
             <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-envers</artifactId>
-                <version>${spring.data.envers.version}</version>
+                <groupId>org.simpleflatmapper</groupId>
+                <artifactId>sfm-springjdbc-jre9</artifactId>
+                <version>${simple.flatmapper.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-redis</artifactId>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-mail</artifactId>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-security</artifactId>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-oauth2-client</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-            </dependency>
-
-            <dependency>
-                <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <scope>runtime</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.postgresql</groupId>
-                <artifactId>postgresql</artifactId>
-                <scope>runtime</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-devtools</artifactId>
-                <scope>runtime</scope>
-                <optional>true</optional>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-configuration-processor</artifactId>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-test</artifactId>
-                <scope>test</scope>
-            </dependency>
-            -->
         </dependencies>
     </dependencyManagement>
 
@@ -131,7 +69,6 @@
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <!-- todo можно было еще более непонятно объяснить это свойство(я про доку) -->
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -158,9 +95,6 @@
             </plugins>
         </pluginManagement>
         <plugins>
-            <!-- TODO это все починило. (раньше при mvn install вылетала ошибка:
-                  Maven build Compilation error : Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile)
-                  on project проджктнейм). кста если поставить 1.11 то тоже все сломается, а если просто 11 то норм -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

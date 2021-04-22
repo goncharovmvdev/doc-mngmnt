@@ -2,6 +2,7 @@ package doc.mngmnt.entity.catalog;
 
 import doc.mngmnt.entity.audit.PersistOpsAuthorRecordingEntity;
 import doc.mngmnt.entity.document.DocumentEntity;
+import doc.mngmnt.entity.document.DocumentVersionEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,7 +15,7 @@ import java.util.Set;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "\"catalog\""/* , schema = "public" */)
+@Table(name = "catalog"/* , schema = "public" */)
 @Data
 @EqualsAndHashCode(callSuper = false, of = {"id"})
 @NoArgsConstructor
@@ -30,20 +31,14 @@ public class CatalogEntity extends PersistOpsAuthorRecordingEntity<Long> {
     @NotBlank
     private String name;
 
-    // TODO: 18.04.2021 вообще бан
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "\"parent_child_catalog_tree\"",
-        joinColumns = {@JoinColumn(name = "parent_id", referencedColumnName = "id")},
-        inverseJoinColumns = {@JoinColumn(name = "child_id", referencedColumnName = "id")})
-    private Set<CatalogEntity> parentCatalogs;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id", referencedColumnName = "id")
+    private CatalogEntity parentCatalog;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "\"parent_child_catalog_tree\"",
-        joinColumns = {@JoinColumn(name = "child_id", referencedColumnName = "id")},
-        inverseJoinColumns = {@JoinColumn(name = "parent_id", referencedColumnName = "id")})
-    private Set<CatalogEntity> childCatalogs;
-
-    //todo 4ek
-    @OneToMany(mappedBy = "id", cascade = {CascadeType.ALL}, orphanRemoval = true)
+    // TODO: 20.04.2021 наследование в бд
+    @OneToMany(mappedBy = "id", cascade = {CascadeType.ALL})
     private Set<DocumentEntity> documents;
+
+    @OneToMany(mappedBy = "id", cascade = {CascadeType.ALL})
+    private Set<DocumentVersionEntity> versionDocuments;
 }

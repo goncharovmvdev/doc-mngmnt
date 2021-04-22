@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
-@Table(name = "\"document_type\"")
+@Table(name = "document_type")
 @Data
 @EqualsAndHashCode(callSuper = false, of = {"id"})
 @NoArgsConstructor
@@ -27,9 +27,15 @@ public class DocumentTypeEntity extends PersistOpsAuthorRecordingEntity<Long> {
     @NotNull
     private String name;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "\"document_type_document\"",
+    @ManyToMany
+    @JoinTable(name = "document_type_document",
         joinColumns = {@JoinColumn(name = "document_type_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "document_id", referencedColumnName = "id")})
     private Set<DocumentEntity> documents;
+
+    @ManyToMany
+    @JoinTable(name = "document_type_document_version",
+        joinColumns = {@JoinColumn(name = "document_type_id", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "document_version_id", referencedColumnName = "id")})
+    private Set<DocumentVersionEntity> versionedDocuments;
 }

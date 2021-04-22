@@ -2,6 +2,7 @@ package doc.mngmnt.entity.file;
 
 import doc.mngmnt.entity.audit.PersistOpsAuthorRecordingEntity;
 import doc.mngmnt.entity.document.DocumentEntity;
+import doc.mngmnt.entity.document.DocumentVersionEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,7 +14,7 @@ import javax.validation.constraints.NotNull;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "\"file\""/* , schema = "public" */)
+@Table(name = "file"/* , schema = "public" */)
 @Data
 @EqualsAndHashCode(callSuper = false, of = {"id"})
 @NoArgsConstructor
@@ -25,11 +26,15 @@ public class FileEntity extends PersistOpsAuthorRecordingEntity<Long> {
     private Long id;
 
     @Basic(optional = false)
-    @Column(name = "path", nullable = false, columnDefinition = "VARCHAR(255) NOT NULL")
+    @Column(name = "path", nullable = false)
     @NotNull
     private String path;
 
     @ManyToOne
     @JoinColumn(name = "document_id", nullable = false)
     private DocumentEntity documentId;
+
+    @ManyToOne
+    @JoinColumn(name = "document_version_id")
+    private DocumentVersionEntity documentVersionId;
 }
