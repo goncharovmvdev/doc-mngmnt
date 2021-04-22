@@ -28,13 +28,19 @@ VALUES (2, 3);
 INSERT INTO user_role(user_id, role_id)
 VALUES (3, 3);
 
+/* ADD CATALOGS */
+INSERT INTO catalog(name)
+VALUES ('work');
+INSERT INTO catalog(name)
+VALUES ('free time');
+
 /* ADD DOCUMENTS */
-INSERT INTO document(title, description)
-VALUES ('document1', 'first test document');
-INSERT INTO document(title, description)
-VALUES ('document2', 'second test document');
-INSERT INTO document(title, description)
-VALUES ('document3', 'third test document');
+INSERT INTO document(title, description, catalog_id)
+VALUES ('document1', 'first test document', 1);
+INSERT INTO document(title, description, catalog_id)
+VALUES ('document2', 'second test document', 2);
+INSERT INTO document(title, description, catalog_id)
+VALUES ('document3', 'third test document', 2);
 
 /* ADD DOCUMENT TYPES */
 INSERT INTO document_type(name)
