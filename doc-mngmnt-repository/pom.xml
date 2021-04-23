@@ -30,6 +30,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
         </dependency>
+        <!-- TODO (мне) научиться пользоваться -->
         <dependency>
             <groupId>org.simpleflatmapper</groupId>
             <artifactId>sfm-springjdbc-jre9</artifactId>
@@ -40,7 +41,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
 
         <!-- Security context -->
         <dependency>
@@ -59,12 +59,6 @@
             <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
 </project>

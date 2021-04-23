@@ -3,7 +3,6 @@ package doc.mngmnt.repository.test;
 import doc.mngmnt.entity.document.DocumentEntity;
 import doc.mngmnt.entity.document.DocumentTypeEntity;
 import doc.mngmnt.repository.test.config.JdbcConfig;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +20,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-import static org.junit.Assert.assertNotNull;
+/*
 
 @SpringBootTest(classes = {JdbcConfig.class})
 public class DocumentJdbcTest {
@@ -34,13 +33,17 @@ public class DocumentJdbcTest {
             Map<Long, DocumentEntity> documentsById = new HashMap<>();
 
             while (rs.next()) {
-                /* IN document TABLE */
+                */
+/* IN document TABLE *//*
+
                 Long documentId = rs.getLong("DOCID");
 
                 //IN document_type TABLE
                 String documentTypeName = rs.getString("DOCTYPENAME");
 
-                /* ADD DOCUMENT ENTITIES */
+                */
+/* ADD DOCUMENT ENTITIES *//*
+
                 DocumentEntity currentDocument = documentsById.get(documentId);
                 if (currentDocument == null) {
                     currentDocument = new DocumentEntity();
@@ -49,7 +52,9 @@ public class DocumentJdbcTest {
                     documentsById.put(currentDocument.getId(), currentDocument);
                 }
 
-                /* ADD DOCUMENT TYPES ENTITIES */
+                */
+/* ADD DOCUMENT TYPES ENTITIES *//*
+
                 DocumentTypeEntity documentTypeEntity = new DocumentTypeEntity();
                 documentTypeEntity.setName(documentTypeName);
 
@@ -77,9 +82,9 @@ public class DocumentJdbcTest {
         assertNotNull(jdbcTemplate);
     }
 
-    /**
-     * Get all type of a document.
-     */
+    */
+/*
+
     @Test
     public void testDetDocumentTypes() {
         Collection<DocumentEntity> documents = jdbcTemplate.query("SELECT *," +
@@ -93,3 +98,4 @@ public class DocumentJdbcTest {
         documents.forEach(System.out::println);
     }
 }
+*/

@@ -13,11 +13,6 @@
     <dependencies>
         <dependency>
             <groupId>doc-mngmnt-parent</groupId>
-            <artifactId>doc-mngmnt-repository</artifactId>
-            <version>CURRENT</version>
-        </dependency>
-        <dependency>
-            <groupId>doc-mngmnt-parent</groupId>
             <artifactId>doc-mngmnt-entity</artifactId>
             <version>CURRENT</version>
         </dependency>
@@ -41,5 +36,20 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

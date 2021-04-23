@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
@@ -37,13 +38,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
+            // TODO: 23.04.2021 как работает цсрф
             .csrf().disable()
             .cors()
             .and()
-            .httpBasic().disable()
-            .formLogin().disable()
             .authorizeRequests()
+            // TODO: 23.04.2021 ant и mvcMatchers
             .antMatchers("/h2-console/**").permitAll()
-            .anyRequest().permitAll();
+            .anyRequest().authenticated();
     }
 }

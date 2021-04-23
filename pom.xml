@@ -24,5 +24,6 @@
         <module>doc-mngmnt-security</module>
         <module>doc-mngmnt-dto</module>
         <module>doc-mngmnt-runner</module>
+        <module>doc-mngmnt-cloud-storage</module>
     </modules>
 </project>

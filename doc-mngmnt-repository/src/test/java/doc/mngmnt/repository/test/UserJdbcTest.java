@@ -6,8 +6,6 @@ import doc.mngmnt.entity.file.FileEntity;
 import doc.mngmnt.entity.security.RoleEntity;
 import doc.mngmnt.entity.user.UserEntity;
 import doc.mngmnt.repository.test.config.JdbcConfig;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -120,7 +118,6 @@ public class UserJdbcTest {
         }
     };
 
-    @Before
     @Rollback(false)
     public void setupData() {
         //init schema
@@ -131,11 +128,6 @@ public class UserJdbcTest {
         Resource setupData = new ClassPathResource("db.migration/V1__init.sql");
         DatabasePopulator setupDataPopulator = new ResourceDatabasePopulator(initSchema);
         DatabasePopulatorUtils.execute(setupDataPopulator, jdbcTemplate.getDataSource());
-    }
-
-    @Test
-    public void assertJdbcTemplateNotNull() {
-        Assert.assertNotNull(jdbcTemplate);
     }
 
     /**

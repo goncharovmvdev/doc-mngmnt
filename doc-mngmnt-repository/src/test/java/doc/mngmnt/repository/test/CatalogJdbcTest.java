@@ -1,22 +1,27 @@
 package doc.mngmnt.repository.test;
 
-import doc.mngmnt.entity.catalog.CatalogEntity;
-import doc.mngmnt.entity.user.UserEntity;
-import doc.mngmnt.repository.test.config.JdbcConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.jdbc.Sql;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-@SpringBootTest(classes = {JdbcConfig.class})
+@JdbcTest
+@Sql(scripts = {
+    /* init schema */
+    "classpath:db.migration/V1__init.sql",
+    /* Setup test data */
+    "classpath:V2__set_data.sql"
+})
+/* TODO: 23.04.2021 как указать на папку, в которой есть класс с @SpringBootApplication.
+    (В doc.mngmnt.runner) DocumentManagementApplicationRunner - нужный класс, но она не распознается.
+    java.lang.IllegalArgumentException: Invalid source 'classpath:/doc/mngmnt/repository/test/doc.mngmnt.runner'
+    @JdbcTest и @Sql сделают тесты не такими костыльными */
+@ContextConfiguration(locations = {"doc.mngmnt.runner"}, inheritLocations = false)
 public class CatalogJdbcTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
