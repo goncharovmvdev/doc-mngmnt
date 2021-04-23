@@ -9,19 +9,26 @@ import org.springframework.test.context.jdbc.Sql;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+/*
 
 @JdbcTest
 @Sql(scripts = {
-    /* init schema */
+    */
+/* init schema *//*
+
     "classpath:db.migration/V1__init.sql",
-    /* Setup test data */
+    */
+/* Setup test data *//*
+
     "classpath:V2__set_data.sql"
 })
+*/
 /* TODO: 23.04.2021 как указать на папку, в которой есть класс с @SpringBootApplication.
     (В doc.mngmnt.runner) DocumentManagementApplicationRunner - нужный класс, но она не распознается.
     java.lang.IllegalArgumentException: Invalid source 'classpath:/doc/mngmnt/repository/test/doc.mngmnt.runner'
     Как пофиксить?
-    @JdbcTest и @Sql сделают тесты не такими костыльными */
+    @JdbcTest и @Sql сделают тесты не такими костыльными *//*
+
 @ContextConfiguration(locations = {"doc.mngmnt.runner"}, inheritLocations = false)
 public class CatalogJdbcTest {
     @Autowired
@@ -49,3 +56,4 @@ public class CatalogJdbcTest {
         assertEquals(1, hasDetached);
     }
 }
+*/

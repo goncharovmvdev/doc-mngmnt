@@ -25,6 +25,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
+/*
 
 @SpringBootTest(classes = {JdbcConfig.class})
 public class UserJdbcTest {
@@ -39,7 +40,9 @@ public class UserJdbcTest {
             Map<Long, DocumentEntity> documentsById = new HashMap<>();
 
             while (rs.next()) {
-                /* IN \"user\" TABLE */
+                */
+/* IN \"user\" TABLE *//*
+
                 Long userId = rs.getLong("id");
                 String password = rs.getString("password");
                 String username = rs.getString("username");
@@ -50,11 +53,15 @@ public class UserJdbcTest {
                 String email = rs.getString("email");
                 String phoneNumber = rs.getString("phone_number");
 
-                /* IN \"role\" TABLE */
+                */
+/* IN \"role\" TABLE *//*
+
                 Long roleId = rs.getLong("ROLID");
                 String roleName = rs.getString("ROLNAME");
 
-                /* IN document TABLE */
+                */
+/* IN document TABLE *//*
+
                 Long documentId = rs.getLong("DOCID");
                 String documentTitle = rs.getString("DOCTITLE");
                 String documentDescription = rs.getString("DOCDESCRIPTION");
@@ -69,7 +76,9 @@ public class UserJdbcTest {
 
                 UserEntity currentUser = usersById.get(userId);
                 if (currentUser == null) {
-                    /* CREATE NEW USER */
+                    */
+/* CREATE NEW USER *//*
+
                     currentUser = new UserEntity();
                     currentUser.setId(userId);
                     currentUser.setPassword(password);
@@ -85,13 +94,17 @@ public class UserJdbcTest {
 
                     usersById.put(currentUser.getId(), currentUser);
                 }
-                /* ADD ROLE ENTITY */
+                */
+/* ADD ROLE ENTITY *//*
+
                 RoleEntity roleEntity = new RoleEntity();
                 roleEntity.setId(roleId);
                 roleEntity.setName(roleName);
                 currentUser.getRoles().add(roleEntity);
 
-                /* ADD DOCUMENT ENTITIES */
+                */
+/* ADD DOCUMENT ENTITIES *//*
+
                 DocumentEntity currentDocument = documentsById.get(documentId);
                 if (currentDocument == null) {
                     currentDocument = new DocumentEntity();
@@ -101,13 +114,17 @@ public class UserJdbcTest {
                     currentDocument.setFiles(new HashSet<>());
                     documentsById.put(currentDocument.getId(), currentDocument);
                 }
-                /* ADD FILE ENTITIES */
+                */
+/* ADD FILE ENTITIES *//*
+
                 FileEntity fileEntity = new FileEntity();
                 fileEntity.setId(fileId);
                 fileEntity.setPath(filePath);
                 currentDocument.getFiles().add(fileEntity);
 
-                /* ADD DOCUMENT TYPES ENTITIES */
+                */
+/* ADD DOCUMENT TYPES ENTITIES *//*
+
                 DocumentTypeEntity documentTypeEntity = new DocumentTypeEntity();
                 documentTypeEntity.setId(documentTypeId);
                 documentTypeEntity.setName(documentTypeName);
@@ -130,9 +147,11 @@ public class UserJdbcTest {
         DatabasePopulatorUtils.execute(setupDataPopulator, jdbcTemplate.getDataSource());
     }
 
-    /**
+    */
+/**
      * 3 users are in db by default
-     */
+     *//*
+
     @Test
     public void testGetAllUsers() {
         Collection<UserEntity> users = jdbcTemplate.query("SELECT *," +
@@ -177,4 +196,5 @@ public class UserJdbcTest {
         }, keyHolder);
     }
 }
+*/
 
