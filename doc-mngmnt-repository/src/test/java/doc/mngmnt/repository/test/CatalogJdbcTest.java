@@ -20,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 /* TODO: 23.04.2021 как указать на папку, в которой есть класс с @SpringBootApplication.
     (В doc.mngmnt.runner) DocumentManagementApplicationRunner - нужный класс, но она не распознается.
     java.lang.IllegalArgumentException: Invalid source 'classpath:/doc/mngmnt/repository/test/doc.mngmnt.runner'
+    Как пофиксить?
     @JdbcTest и @Sql сделают тесты не такими костыльными */
 @ContextConfiguration(locations = {"doc.mngmnt.runner"}, inheritLocations = false)
 public class CatalogJdbcTest {
