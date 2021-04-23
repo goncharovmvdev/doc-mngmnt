@@ -5,10 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>doc-mngmnt-parent</artifactId>
+        <artifactId>doc-mngmnt</artifactId>
         <groupId>doc-mngmnt-parent</groupId>
         <version>CURRENT</version>
-        <relativePath>../doc-mngmnt-parent/pom.xml</relativePath>
     </parent>
 
     <artifactId>doc-mngmnt-repository</artifactId>
@@ -60,13 +59,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub LShubinaDev Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/LShubinaDev/doc-mngmnt-repositoy</url>
-        </repository>
-    </distributionManagement>
 
 </project>

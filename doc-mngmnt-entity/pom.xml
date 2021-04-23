@@ -5,10 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>doc-mngmnt-parent</artifactId>
+        <artifactId>doc-mngmnt</artifactId>
         <groupId>doc-mngmnt-parent</groupId>
         <version>CURRENT</version>
-        <relativePath>../doc-mngmnt-parent/pom.xml</relativePath>
     </parent>
 
     <artifactId>doc-mngmnt-entity</artifactId>

@@ -13,7 +13,7 @@
         </parent>
         -->
 
-    <groupId>doc-mngmnt-parent</groupId>
+    <groupId>doc-mngmnt</groupId>
     <artifactId>doc-mngmnt-parent</artifactId>
     <version>CURRENT</version>
     <packaging>pom</packaging>
