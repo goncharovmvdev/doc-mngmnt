@@ -17,15 +17,13 @@ import java.time.ZonedDateTime;
 /**
  * Abstract class for recording persist ops authors.
  *
- * @param <ID> type of {@code id} of auditing entity (type of managing user's id).
+ * @param <ID> type of auditor (usually some type of <i>user</i>).
  */
 @MappedSuperclass
 @EntityListeners({AuditingEntityListener.class})
 @Getter
 @Setter
 public abstract class PersistOpsAuthorRecordingEntity<ID> {
-    @Basic(optional = false)
-    @Column(name = "created_by",updatable = false)
     @CreatedBy
     private ID createdBy;
 
@@ -34,8 +32,6 @@ public abstract class PersistOpsAuthorRecordingEntity<ID> {
     @CreatedDate
     private ZonedDateTime created;
 
-    @Basic(optional = false)
-    @Column(name = "updated_by")
     @LastModifiedBy
     private ID updatedBy;
 

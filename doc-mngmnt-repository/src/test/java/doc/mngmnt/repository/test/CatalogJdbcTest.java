@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 @Sql(scripts = {
     //init schema
-    "classpath:db.migrations/V1__init.sql",
+    "classpath:db.migration/V1__init.sql",
     //Setup test data
     "classpath:V2__set_data.sql"
 })

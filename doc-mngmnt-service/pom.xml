@@ -2,40 +2,35 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <artifactId>doc-mngmnt</artifactId>
         <groupId>doc-mngmnt-parent</groupId>
         <version>CURRENT</version>
+        <relativePath>../doc-mngmnt-parent/pom.xml</relativePath>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
+
     <artifactId>doc-mngmnt-service</artifactId>
 
     <dependencies>
-        <!-- Repository -->
         <dependency>
-            <groupId>doc-mngmnt-parent</groupId>
+            <groupId>doc-mngmnt</groupId>
             <artifactId>doc-mngmnt-repository</artifactId>
             <version>CURRENT</version>
-            <scope>compile</scope>
         </dependency>
-
-        <!-- Entity -->
         <dependency>
-            <groupId>doc-mngmnt-parent</groupId>
+            <groupId>doc-mngmnt</groupId>
             <artifactId>doc-mngmnt-entity</artifactId>
             <version>CURRENT</version>
-            <scope>compile</scope>
         </dependency>
-
-        <!-- Dto -->
         <dependency>
-            <groupId>doc-mngmnt-parent</groupId>
+            <groupId>doc-mngmnt</groupId>
             <artifactId>doc-mngmnt-dto</artifactId>
             <version>CURRENT</version>
             <scope>compile</scope>
         </dependency>
 
-        <!-- Spring configuration processor -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>

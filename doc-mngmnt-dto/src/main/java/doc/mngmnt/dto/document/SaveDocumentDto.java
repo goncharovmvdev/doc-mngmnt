@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
 import java.io.File;
 import java.util.Set;
 
@@ -13,9 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SaveDocumentDto {
-    @NotBlank
     private String title;
-    @NotBlank
     private String description;
     private DocumentEntity.Importance importance;
     private Long catalogId;

@@ -1,13 +1,14 @@
 package doc.mngmnt.entity.document;
 
 import doc.mngmnt.entity.audit.PersistOpsAuthorRecordingEntity;
+import doc.mngmnt.entity.user.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
 @Entity
@@ -16,15 +17,15 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = false, of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
-public class DocumentTypeEntity extends PersistOpsAuthorRecordingEntity<Long> {
+public class DocumentTypeEntity extends PersistOpsAuthorRecordingEntity<UserEntity> {
     @Id
-    @Column(name = "id", nullable = false, unique = true, updatable = false)
+    @Column(name = "id", updatable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Basic(optional = false)
     @Column(name = "name", nullable = false)
-    @NotNull
+    @NotBlank
     private String name;
 
     @ManyToMany
@@ -34,7 +35,7 @@ public class DocumentTypeEntity extends PersistOpsAuthorRecordingEntity<Long> {
     private Set<DocumentEntity> documents;
 
     @ManyToMany
-    @JoinTable(name = "document_type_document_version",
+    @JoinTable(name = "document_version_document_type",
         joinColumns = {@JoinColumn(name = "document_type_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "document_version_id", referencedColumnName = "id")})
     private Set<DocumentVersionEntity> versionedDocuments;

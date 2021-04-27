@@ -23,7 +23,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @EqualsAndHashCode(callSuper = false, of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
-public class DocumentEntity extends PersistOpsAuthorRecordingEntity<Long> {
+public class DocumentEntity extends PersistOpsAuthorRecordingEntity<UserEntity> {
     @Id
     @Column(name = "id", updatable = false)
     @GeneratedValue(strategy = IDENTITY)
@@ -70,7 +70,7 @@ public class DocumentEntity extends PersistOpsAuthorRecordingEntity<Long> {
     @OneToMany(mappedBy = "id", orphanRemoval = true, cascade = {CascadeType.ALL})
     private Set<DocumentVersionEntity> versions;
 
-    // TODO: 21.04.2021 ????
+    // TODO: 21.04.2021 ???? может лучше энтити лиснер написать?
     @PrePersist
     protected void prePersistSetVersions() {
         saveCurrentVersion();
@@ -81,7 +81,7 @@ public class DocumentEntity extends PersistOpsAuthorRecordingEntity<Long> {
         saveCurrentVersion();
     }
 
-    private void saveCurrentVersion() {
+    protected void saveCurrentVersion() {
         this.versions.add(new DocumentVersionEntity(this));
     }
 }

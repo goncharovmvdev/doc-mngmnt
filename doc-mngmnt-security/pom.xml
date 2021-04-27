@@ -15,25 +15,21 @@
     <artifactId>doc-mngmnt-security</artifactId>
 
     <dependencies>
-        <!-- Entity -->
         <dependency>
             <groupId>doc-mngmnt</groupId>
             <artifactId>doc-mngmnt-entity</artifactId>
             <version>CURRENT</version>
         </dependency>
-        <!-- Repository -->
         <dependency>
             <groupId>doc-mngmnt</groupId>
             <artifactId>doc-mngmnt-repository</artifactId>
             <version>CURRENT</version>
         </dependency>
 
-        <!-- Spring security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <!-- Spring web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

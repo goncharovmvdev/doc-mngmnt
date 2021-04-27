@@ -20,6 +20,7 @@
             <artifactId>doc-mngmnt-entity</artifactId>
             <version>CURRENT</version>
         </dependency>
+        <!--Я в application.properties настраиваю постгрес -> нужен его драйвер нужен драйвер -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>

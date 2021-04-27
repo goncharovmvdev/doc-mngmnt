@@ -23,7 +23,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @EqualsAndHashCode(callSuper = false, of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserEntity extends PersistOpsAuthorRecordingEntity<Long> {
+public class UserEntity extends PersistOpsAuthorRecordingEntity<UserEntity> {
     @Id
     @Column(name = "id", updatable = false)
     @GeneratedValue(strategy = IDENTITY)
@@ -68,8 +68,9 @@ public class UserEntity extends PersistOpsAuthorRecordingEntity<Long> {
     @Column(name = "phone_number", columnDefinition = "VARCHAR(255) DEFAULT NULL")
     private String phoneNumber;
 
+    // TODO: 27.04.2021 (важно) что такое каскейды (про каждый)?
     @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "\"user_role\"",
+    @JoinTable(name = "user_role",
         joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private Set<RoleEntity> roles;

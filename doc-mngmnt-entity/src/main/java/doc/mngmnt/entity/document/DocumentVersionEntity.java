@@ -22,7 +22,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class DocumentVersionEntity {
     @Id
-    @Column(name = "id", nullable = false, updatable = false)
+    @Column(name = "id", updatable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -45,7 +45,7 @@ public class DocumentVersionEntity {
     private Set<FileEntity> files;
 
     @ManyToMany
-    @JoinTable(name = "document_type_document_version",
+    @JoinTable(name = "document_version_document_type",
         joinColumns = {@JoinColumn(name = "document_version_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "document_type_id", referencedColumnName = "id")})
     private Set<DocumentTypeEntity> types;
@@ -67,12 +67,13 @@ public class DocumentVersionEntity {
     private Set<UserEntity> ownerIds;
 
     public DocumentVersionEntity(DocumentEntity documentEntity) {
-        this.setTitle(documentEntity.getTitle());
-        this.setDescription(documentEntity.getDescription());
-        this.setFiles(documentEntity.getFiles());
-        this.setTypes(documentEntity.getTypes());
-        this.setImportance(documentEntity.getImportance());
-        this.setCatalog(documentEntity.getCatalog());
-        this.setOwnerIds(documentEntity.getOwnerIds());
+        this.document = documentEntity;
+        this.title = documentEntity.getTitle();
+        this.description = documentEntity.getDescription();
+        this.files = documentEntity.getFiles();
+        this.types = documentEntity.getTypes();
+        this.importance = documentEntity.getImportance();
+        this.catalog = documentEntity.getCatalog();
+        this.ownerIds = documentEntity.getOwnerIds();
     }
 }

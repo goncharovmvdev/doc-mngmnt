@@ -3,6 +3,7 @@ package doc.mngmnt.entity.file;
 import doc.mngmnt.entity.audit.PersistOpsAuthorRecordingEntity;
 import doc.mngmnt.entity.document.DocumentEntity;
 import doc.mngmnt.entity.document.DocumentVersionEntity;
+import doc.mngmnt.entity.user.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,7 +20,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @EqualsAndHashCode(callSuper = false, of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
-public class FileEntity extends PersistOpsAuthorRecordingEntity<Long> {
+public class FileEntity extends PersistOpsAuthorRecordingEntity<UserEntity> {
     @Id
     @Column(name = "id", updatable = false)
     @GeneratedValue(strategy = IDENTITY)

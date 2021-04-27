@@ -3,6 +3,7 @@ package doc.mngmnt.entity.catalog;
 import doc.mngmnt.entity.audit.PersistOpsAuthorRecordingEntity;
 import doc.mngmnt.entity.document.DocumentEntity;
 import doc.mngmnt.entity.document.DocumentVersionEntity;
+import doc.mngmnt.entity.user.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,7 +21,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @EqualsAndHashCode(callSuper = false, of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
-public class CatalogEntity extends PersistOpsAuthorRecordingEntity<Long> {
+public class CatalogEntity extends PersistOpsAuthorRecordingEntity<UserEntity> {
     @Id
     @Column(name = "id", updatable = false)
     @GeneratedValue(strategy = IDENTITY)
@@ -35,7 +36,6 @@ public class CatalogEntity extends PersistOpsAuthorRecordingEntity<Long> {
     @JoinColumn(name = "parent_id", referencedColumnName = "id")
     private CatalogEntity parentCatalog;
 
-    // TODO: 20.04.2021 наследование в бд
     @OneToMany(mappedBy = "id", cascade = {CascadeType.ALL})
     private Set<DocumentEntity> documents;
 

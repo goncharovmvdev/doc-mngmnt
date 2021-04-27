@@ -11,8 +11,7 @@ CREATE TABLE IF NOT EXISTS "user"
     credentials_non_expired BOOLEAN                  NOT NULL DEFAULT TRUE,
     enabled                 BOOLEAN                  NOT NULL DEFAULT TRUE,
 
-    /* 2 phase authentication + доп. данные о пользователе
-     *  (ну например бует полезная функция восстаноления пароля через email) */
+    /* доп. данные о пользователе (ну, например, бует полезная функция восстаноления пароля по email) */
     email                   VARCHAR(255)             NOT NULL UNIQUE,
     phone_number            VARCHAR(255)                      DEFAULT NULL,
 
@@ -55,7 +54,7 @@ CREATE TABLE IF NOT EXISTS catalog
     name       VARCHAR(255)             NOT NULL UNIQUE,
 
     /* Parent to current catalog */
-    parent_id  BIGINT DEFAULT NULL,
+    parent_id  BIGINT                            DEFAULT NULL,
     CONSTRAINT parent_catalog
         FOREIGN KEY (parent_id)
             REFERENCES catalog (id),
@@ -86,7 +85,7 @@ CREATE TABLE IF NOT EXISTS document
     id          BIGSERIAL PRIMARY KEY,
     title       VARCHAR(255)             NOT NULL,
     description VARCHAR(255)             NOT NULL,
-    importance  VARCHAR(32)              DEFAULT NULL,
+    importance  VARCHAR(32)                       DEFAULT NULL,
 
     /* Catalog, containing current document */
     catalog_id  BIGINT,
@@ -160,7 +159,7 @@ CREATE TABLE IF NOT EXISTS document_version_document_type
 
 CREATE TABLE IF NOT EXISTS user_document_version
 (
-    user_id     BIGINT NOT NULL,
+    user_id             BIGINT NOT NULL,
     CONSTRAINT fk_user_document_version__user__many_to_many_constraint
         FOREIGN KEY (user_id)
             REFERENCES "user" (id),

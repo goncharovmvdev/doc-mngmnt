@@ -24,7 +24,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 public class ResetPasswordTokenEntity {
     @Id
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 

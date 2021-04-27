@@ -19,7 +19,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @EqualsAndHashCode(callSuper = false, of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoleEntity extends PersistOpsAuthorRecordingEntity<Long> {
+public class RoleEntity extends PersistOpsAuthorRecordingEntity<UserEntity> {
     @Id
     @Column(name = "id", updatable = false)
     @GeneratedValue(strategy = IDENTITY)
@@ -31,7 +31,7 @@ public class RoleEntity extends PersistOpsAuthorRecordingEntity<Long> {
     private String name;
 
     @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "\"user_role\"",
+    @JoinTable(name = "user_role",
         joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")})
     private Set<UserEntity> users;
