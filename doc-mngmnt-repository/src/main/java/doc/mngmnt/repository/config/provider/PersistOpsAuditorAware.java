@@ -1,4 +1,4 @@
-package doc.mngmnt.repository.config;
+package doc.mngmnt.repository.config.provider;
 
 import doc.mngmnt.repository.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.Optional;
 
-public class AuditorAwareImpl implements AuditorAware<Long> {
+public class PersistOpsAuditorAware implements AuditorAware<Long> {
     @Autowired
     private UserRepository userRepository;
 

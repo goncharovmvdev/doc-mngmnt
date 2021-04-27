@@ -5,51 +5,37 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>doc-mngmnt-parent</groupId>
+        <groupId>doc-mngmnt</groupId>
         <artifactId>doc-mngmnt-parent</artifactId>
         <version>CURRENT</version>
-        <relativePath>./doc-mngmnt-parent/pom.xml</relativePath>
     </parent>
 
     <artifactId>doc-mngmnt</artifactId>
     <packaging>pom</packaging>
-    <name>doc-mngmnt</name>
+
+    <properties>
+        <deploy.plugin.verion>2.8.1</deploy.plugin.verion>
+        <deploy.url>https://maven.pkg.github.com/LShubinaDev/doc-mngmnt</deploy.url>
+    </properties>
 
     <modules>
+        <module>doc-mngmnt-cloud-storage</module>
+        <module>doc-mngmnt-dto</module>
         <module>doc-mngmnt-entity</module>
         <module>doc-mngmnt-parent</module>
+        <module>doc-mngmnt-jetty</module>
         <module>doc-mngmnt-repository</module>
-        <module>doc-mngmnt-service</module>
         <module>doc-mngmnt-rest</module>
-        <module>doc-mngmnt-security</module>
-        <module>doc-mngmnt-dto</module>
         <module>doc-mngmnt-runner</module>
-        <module>doc-mngmnt-cloud-storage</module>
+        <module>doc-mngmnt-security</module>
+        <module>doc-mngmnt-service</module>
     </modules>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.1</version>
-                <executions>
-                    <execution>
-                        <id>default-deploy</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 
     <distributionManagement>
         <repository>
             <id>github</id>
             <name>GitHub LShubinaDev Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/LShubinaDev/doc-mngmnt</url>
+            <url>${deploy.url}</url>
         </repository>
     </distributionManagement>
 </project>

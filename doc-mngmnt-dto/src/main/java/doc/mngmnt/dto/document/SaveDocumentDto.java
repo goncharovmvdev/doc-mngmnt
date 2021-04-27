@@ -1,6 +1,6 @@
 package doc.mngmnt.dto.document;
 
-import doc.mngmnt.entity.document.DocumentEntity.Importance;
+import doc.mngmnt.entity.document.DocumentEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,7 @@ public class SaveDocumentDto {
     private String title;
     @NotBlank
     private String description;
-    private Importance importance;
+    private DocumentEntity.Importance importance;
     private Long catalogId;
     private Set<String> typeNames;
     private Set<Long> ownerIds;

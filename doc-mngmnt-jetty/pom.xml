@@ -12,14 +12,25 @@
     </parent>
 
     <groupId>doc-mngmnt</groupId>
-    <artifactId>doc-mngmnt-dto</artifactId>
+    <artifactId>doc-mngmnt-jetty</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>doc-mngmnt</groupId>
-            <artifactId>doc-mngmnt-entity</artifactId>
-            <version>CURRENT</version>
-            <scope>compile</scope>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
         </dependency>
     </dependencies>
 

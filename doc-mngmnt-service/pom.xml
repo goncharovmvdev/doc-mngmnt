@@ -11,7 +11,7 @@
     <artifactId>doc-mngmnt-service</artifactId>
 
     <dependencies>
-        <!-- Parent -->
+        <!-- Repository -->
         <dependency>
             <groupId>doc-mngmnt-parent</groupId>
             <artifactId>doc-mngmnt-repository</artifactId>

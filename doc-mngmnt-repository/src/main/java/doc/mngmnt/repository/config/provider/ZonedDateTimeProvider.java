@@ -1,4 +1,4 @@
-package doc.mngmnt.repository.config;
+package doc.mngmnt.repository.config.provider;
 
 import org.springframework.data.auditing.DateTimeProvider;
 

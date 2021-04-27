@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(scanBasePackages = {"doc.mngmnt"})
+@ComponentScan(basePackages = {"doc.mngmnt"})
 @EntityScan(basePackages = {"doc.mngmnt.entity"})
 @EnableJpaRepositories(basePackages = {"doc.mngmnt.repository"})
-@ComponentScan(basePackages = {"doc.mngmnt"})
 public class DocumentManagementApplicationRunner {
 
     public static void main(String[] args) {

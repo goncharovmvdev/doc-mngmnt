@@ -38,7 +38,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-            // TODO: 23.04.2021 как работает цсрф
             .csrf().disable()
             .cors()
             .and()

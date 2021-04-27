@@ -1,25 +1,5 @@
 package doc.mngmnt.repository.test;
 
-import doc.mngmnt.entity.document.DocumentEntity;
-import doc.mngmnt.entity.document.DocumentTypeEntity;
-import doc.mngmnt.repository.test.config.JdbcConfig;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.datasource.init.DatabasePopulator;
-import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
-import org.springframework.test.annotation.Rollback;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.*;
-
 /*
 
 @SpringBootTest(classes = {JdbcConfig.class})

@@ -16,6 +16,7 @@
       <set>
         <option value="$PROJECT_DIR$/doc-mngmnt-ddl/pom.xml" />
         <option value="$PROJECT_DIR$/doc-mngmnt-firebase/pom.xml" />
+        <option value="$PROJECT_DIR$/doc-mngmnt-tomcat/pom.xml" />
       </set>
     </option>
   </component>

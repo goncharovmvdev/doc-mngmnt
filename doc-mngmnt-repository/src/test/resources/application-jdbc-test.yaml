@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:h2:~/Data/test;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
+    username: sa
+    password:

@@ -1,5 +1,7 @@
 package doc.mngmnt.repository.config;
 
+import doc.mngmnt.repository.config.provider.PersistOpsAuditorAware;
+import doc.mngmnt.repository.config.provider.ZonedDateTimeProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.auditing.DateTimeProvider;
@@ -12,7 +14,7 @@ public class AuditConfig {
 
     @Bean
     public AuditorAware<Long> auditorAware() {
-        return new AuditorAwareImpl();
+        return new PersistOpsAuditorAware();
     }
 
     @Bean

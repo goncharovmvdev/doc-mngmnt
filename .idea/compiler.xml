@@ -15,15 +15,18 @@
         <module name="doc-mngmnt-runner" />
         <module name="doc-mngmnt-rest" />
         <module name="doc-mngmnt-dto" />
+        <module name="doc-mngmnt-jetty" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="doc-mngmnt-ddl" target="11" />
       <module name="doc-mngmnt-firebase" target="11" />
+      <module name="doc-mngmnt-tomcat" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="doc-mngmnt-cloud-storage" options="-parameters" />
       <module name="doc-mngmnt-ddl" options="" />
       <module name="doc-mngmnt-dto" options="" />
       <module name="doc-mngmnt-entity" options="" />
