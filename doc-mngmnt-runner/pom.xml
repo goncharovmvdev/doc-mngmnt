@@ -17,7 +17,28 @@
     <dependencies>
         <dependency>
             <groupId>doc-mngmnt</groupId>
+            <artifactId>doc-mngmnt-cloud-storage</artifactId>
+            <version>CURRENT</version>
+        </dependency>
+        <dependency>
+            <groupId>doc-mngmnt</groupId>
             <artifactId>doc-mngmnt-entity</artifactId>
+            <version>CURRENT</version>
+        </dependency>
+        <!-- todo потом убрать -->
+        <dependency>
+            <groupId>doc-mngmnt</groupId>
+            <artifactId>doc-mngmnt-repository</artifactId>
+            <version>CURRENT</version>
+        </dependency>
+        <dependency>
+            <groupId>doc-mngmnt</groupId>
+            <artifactId>doc-mngmnt-rest</artifactId>
+            <version>CURRENT</version>
+        </dependency>
+        <dependency>
+            <groupId>doc-mngmnt</groupId>
+            <artifactId>doc-mngmnt-security</artifactId>
             <version>CURRENT</version>
         </dependency>
         <!--Я в application.properties настраиваю постгрес -> нужен его драйвер нужен драйвер -->

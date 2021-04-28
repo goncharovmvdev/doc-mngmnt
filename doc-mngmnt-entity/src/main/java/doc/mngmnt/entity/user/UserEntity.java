@@ -1,6 +1,5 @@
 package doc.mngmnt.entity.user;
 
-import doc.mngmnt.entity.audit.PersistOpsAuthorRecordingEntity;
 import doc.mngmnt.entity.document.DocumentEntity;
 import doc.mngmnt.entity.document.DocumentVersionEntity;
 import doc.mngmnt.entity.security.RoleEntity;
@@ -20,10 +19,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "\"user\""/*, schema = "public" */)
 @Data
-@EqualsAndHashCode(callSuper = false, of = {"id"})
+@EqualsAndHashCode(of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserEntity extends PersistOpsAuthorRecordingEntity<UserEntity> {
+public class UserEntity {
     @Id
     @Column(name = "id", updatable = false)
     @GeneratedValue(strategy = IDENTITY)

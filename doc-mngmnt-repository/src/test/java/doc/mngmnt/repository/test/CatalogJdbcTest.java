@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
     //Setup test data
     "classpath:V2__set_data.sql"
 })
-@ContextConfiguration(locations = {"classpath:doc-mngmnt"})
+@ContextConfiguration(locations = {"classpath:doc-mngmnt-runner"})
 public class CatalogJdbcTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;

@@ -1,6 +1,5 @@
 package doc.mngmnt.entity.security;
 
-import doc.mngmnt.entity.audit.PersistOpsAuthorRecordingEntity;
 import doc.mngmnt.entity.user.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,10 +15,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "\"role\""/* , schema = "public" */)
 @Data
-@EqualsAndHashCode(callSuper = false, of = {"id"})
+@EqualsAndHashCode(of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoleEntity extends PersistOpsAuthorRecordingEntity<UserEntity> {
+public class RoleEntity {
     @Id
     @Column(name = "id", updatable = false)
     @GeneratedValue(strategy = IDENTITY)

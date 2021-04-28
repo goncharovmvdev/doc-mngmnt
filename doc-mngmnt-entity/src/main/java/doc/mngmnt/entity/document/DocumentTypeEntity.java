@@ -1,7 +1,5 @@
 package doc.mngmnt.entity.document;
 
-import doc.mngmnt.entity.audit.PersistOpsAuthorRecordingEntity;
-import doc.mngmnt.entity.user.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,10 +12,10 @@ import java.util.Set;
 @Entity
 @Table(name = "document_type")
 @Data
-@EqualsAndHashCode(callSuper = false, of = {"id"})
+@EqualsAndHashCode(of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
-public class DocumentTypeEntity extends PersistOpsAuthorRecordingEntity<UserEntity> {
+public class DocumentTypeEntity {
     @Id
     @Column(name = "id", updatable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +27,7 @@ public class DocumentTypeEntity extends PersistOpsAuthorRecordingEntity<UserEnti
     private String name;
 
     @ManyToMany
-    @JoinTable(name = "document_type_document",
+    @JoinTable(name = "document_document_type",
         joinColumns = {@JoinColumn(name = "document_type_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "document_id", referencedColumnName = "id")})
     private Set<DocumentEntity> documents;

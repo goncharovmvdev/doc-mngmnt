@@ -1,9 +1,7 @@
 package doc.mngmnt.entity.catalog;
 
-import doc.mngmnt.entity.audit.PersistOpsAuthorRecordingEntity;
 import doc.mngmnt.entity.document.DocumentEntity;
 import doc.mngmnt.entity.document.DocumentVersionEntity;
-import doc.mngmnt.entity.user.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,12 +16,12 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "catalog"/* , schema = "public" */)
 @Data
-@EqualsAndHashCode(callSuper = false, of = {"id"})
+@EqualsAndHashCode(of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
-public class CatalogEntity extends PersistOpsAuthorRecordingEntity<UserEntity> {
+public class CatalogEntity {
     @Id
-    @Column(name = "id", updatable = false)
+    @Column(name = "id", updatable = false, insertable = false)
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 

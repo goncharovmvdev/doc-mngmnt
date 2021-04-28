@@ -8,8 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="doc-mngmnt-cloud-storage" />
-        <module name="doc-mngmnt-service" />
+        <module name="doc-mngmnt-service-impl" />
         <module name="doc-mngmnt-security" />
+        <module name="doc-mngmnt-service-api" />
         <module name="doc-mngmnt-repository" />
         <module name="doc-mngmnt-entity" />
         <module name="doc-mngmnt-runner" />
@@ -36,6 +37,7 @@
       <module name="doc-mngmnt-runner" options="" />
       <module name="doc-mngmnt-security" options="" />
       <module name="doc-mngmnt-service" options="" />
+      <module name="doc-mngmnt-service-impl" options="" />
     </option>
   </component>
 </project>

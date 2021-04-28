@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>doc-mngmnt</groupId>
+        <artifactId>doc-mngmnt-service</artifactId>
+        <version>CURRENT</version>
+        <relativePath>../../doc-mngmnt-parent/pom.xml</relativePath>
+    </parent>
+
+    <groupId>doc-mngmnt-service</groupId>
+    <artifactId>doc-mngmnt-service-api</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>doc-mngmnt</groupId>
+            <artifactId>doc-mngmnt-entity</artifactId>
+            <version>CURRENT</version>
+        </dependency>
+        <dependency>
+            <groupId>doc-mngmnt</groupId>
+            <artifactId>doc-mngmnt-dto</artifactId>
+            <version>CURRENT</version>
+        </dependency>
+    </dependencies>
+</project>

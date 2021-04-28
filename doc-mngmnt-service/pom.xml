@@ -11,30 +11,12 @@
         <relativePath>../doc-mngmnt-parent/pom.xml</relativePath>
     </parent>
 
+    <groupId>doc-mngmnt</groupId>
     <artifactId>doc-mngmnt-service</artifactId>
+    <packaging>pom</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>doc-mngmnt</groupId>
-            <artifactId>doc-mngmnt-repository</artifactId>
-            <version>CURRENT</version>
-        </dependency>
-        <dependency>
-            <groupId>doc-mngmnt</groupId>
-            <artifactId>doc-mngmnt-entity</artifactId>
-            <version>CURRENT</version>
-        </dependency>
-        <dependency>
-            <groupId>doc-mngmnt</groupId>
-            <artifactId>doc-mngmnt-dto</artifactId>
-            <version>CURRENT</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-        </dependency>
-    </dependencies>
-
+    <modules>
+        <module>doc-mngmnt-service-api</module>
+        <module>doc-mngmnt-service-impl</module>
+    </modules>
 </project>

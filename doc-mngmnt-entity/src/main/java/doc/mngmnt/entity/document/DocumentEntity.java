@@ -1,6 +1,5 @@
 package doc.mngmnt.entity.document;
 
-import doc.mngmnt.entity.audit.PersistOpsAuthorRecordingEntity;
 import doc.mngmnt.entity.catalog.CatalogEntity;
 import doc.mngmnt.entity.file.FileEntity;
 import doc.mngmnt.entity.user.UserEntity;
@@ -11,7 +10,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -20,10 +18,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "document")
 @Data
-@EqualsAndHashCode(callSuper = false, of = {"id"})
+@EqualsAndHashCode(of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
-public class DocumentEntity extends PersistOpsAuthorRecordingEntity<UserEntity> {
+public class DocumentEntity {
     @Id
     @Column(name = "id", updatable = false)
     @GeneratedValue(strategy = IDENTITY)
@@ -43,7 +41,7 @@ public class DocumentEntity extends PersistOpsAuthorRecordingEntity<UserEntity> 
     private Set<FileEntity> files;
 
     @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "document_type_document",
+    @JoinTable(name = "document_document_type",
         joinColumns = {@JoinColumn(name = "document_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "document_type_id", referencedColumnName = "id")})
     private Set<DocumentTypeEntity> types;

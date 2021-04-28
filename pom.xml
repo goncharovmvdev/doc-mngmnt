@@ -8,6 +8,7 @@
         <groupId>doc-mngmnt</groupId>
         <artifactId>doc-mngmnt-parent</artifactId>
         <version>CURRENT</version>
+        <relativePath>doc-mngmnt-parent/pom.xml</relativePath>
     </parent>
 
     <artifactId>doc-mngmnt</artifactId>
