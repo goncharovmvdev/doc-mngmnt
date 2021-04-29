@@ -35,8 +35,9 @@
       <module name="doc-mngmnt-repository" options="" />
       <module name="doc-mngmnt-rest" options="" />
       <module name="doc-mngmnt-runner" options="" />
-      <module name="doc-mngmnt-security" options="" />
+      <module name="doc-mngmnt-security" options="-parameters" />
       <module name="doc-mngmnt-service" options="" />
+      <module name="doc-mngmnt-service-api" options="-parameters" />
       <module name="doc-mngmnt-service-impl" options="" />
     </option>
   </component>

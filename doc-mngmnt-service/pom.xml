@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>doc-mngmnt</artifactId>
-        <groupId>doc-mngmnt-parent</groupId>
+        <groupId>doc-mngmnt</groupId>
+        <artifactId>doc-mngmnt-parent</artifactId>
         <version>CURRENT</version>
-        <relativePath>../doc-mngmnt-parent/pom.xml</relativePath>
+        <relativePath>../../doc-mngmnt-parent/pom.xml</relativePath>
     </parent>
 
     <groupId>doc-mngmnt</groupId>

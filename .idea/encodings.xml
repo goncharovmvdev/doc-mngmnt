@@ -11,5 +11,6 @@
     <file url="file://$PROJECT_DIR$/doc-mngmnt-runner" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/doc-mngmnt-security" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/doc-mngmnt-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/doc-mngmnt-service/doc-mngmnt-service-api" charset="UTF-8" />
   </component>
 </project>
