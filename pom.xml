@@ -14,11 +14,6 @@
     <artifactId>doc-mngmnt</artifactId>
     <packaging>pom</packaging>
 
-    <properties>
-        <deploy.plugin.verion>2.8.1</deploy.plugin.verion>
-        <deploy.url>https://maven.pkg.github.com/LShubinaDev/doc-mngmnt</deploy.url>
-    </properties>
-
     <modules>
         <module>doc-mngmnt-cloud-storage</module>
         <module>doc-mngmnt-dto</module>
@@ -32,11 +27,5 @@
         <module>doc-mngmnt-service</module>
     </modules>
 
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub LShubinaDev Apache Maven Packages</name>
-            <url>${deploy.url}</url>
-        </repository>
-    </distributionManagement>
+
 </project>
