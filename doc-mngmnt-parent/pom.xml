@@ -17,40 +17,45 @@
     <packaging>pom</packaging>
 
     <properties>
-        <!-- Compiler props -->
         <java.version>11</java.version>
         <maven.compiler.source>1.11</maven.compiler.source>
         <maven.compiler.target>1.11</maven.compiler.target>
 
-        <!-- Maven plugins -->
         <maven.deploy.plugin.version>2.8.1</maven.deploy.plugin.version>
         <maven.surefire.plugin.version>2.20.1</maven.surefire.plugin.version>
         <maven.war.plugin.version>3.3.1</maven.war.plugin.version>
 
-        <!-- Deployment -->
-        <deploy.plugin.verion>2.8.1</deploy.plugin.verion>
         <deploy.url>https://maven.pkg.github.com/LShubinaDev/doc-mngmnt</deploy.url>
 
-        <!-- Firebase -->
-        <firebase.version>7.1.1</firebase.version>
-        <!-- Flat mapper -->
         <simple.flatmapper.version>8.2.3</simple.flatmapper.version>
+
+        <google.api.client.version>1.23.0</google.api.client.version>
+        <google.oauth.client.version>1.23.0</google.oauth.client.version>
+        <google.api.service.drive.version>v3-rev110-1.23.0</google.api.service.drive.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <!-- Firebase -->
-            <dependency>
-                <groupId>com.google.firebase</groupId>
-                <artifactId>firebase-admin</artifactId>
-                <version>${firebase.version}</version>
-            </dependency>
-
-            <!-- Simple flat mapper -->
             <dependency>
                 <groupId>org.simpleflatmapper</groupId>
                 <artifactId>sfm-springjdbc-jre9</artifactId>
                 <version>${simple.flatmapper.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.api-client</groupId>
+                <artifactId>google-api-client</artifactId>
+                <version>${google.api.client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.oauth-client</groupId>
+                <artifactId>google-oauth-client</artifactId>
+                <version>${google.oauth.client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.apis</groupId>
+                <artifactId>google-api-services-drive</artifactId>
+                <version>${google.api.service.drive.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

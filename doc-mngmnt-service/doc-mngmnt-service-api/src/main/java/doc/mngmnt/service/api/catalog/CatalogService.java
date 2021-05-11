@@ -1,15 +1,22 @@
 package doc.mngmnt.service.api.catalog;
 
-import doc.mngmnt.dto.catalog.AlreadyPresentCatalogDto;
-import doc.mngmnt.entity.catalog.CatalogEntity;
+import doc.mngmnt.dto.catalog.request.UpdateCatalogRequest;
+import doc.mngmnt.dto.catalog.response.AlreadyPresentCatalogResponse;
+import doc.mngmnt.dto.catalog.request.SaveCatalogRequest;
+import doc.mngmnt.dto.document.request.UpdateDocumentRequest;
+import doc.mngmnt.dto.document.response.AlreadyPresentDocumentResponse;
 
 import java.util.Set;
 
 public interface CatalogService {
 
-    CatalogEntity findById(Long catalogId);
+    AlreadyPresentCatalogResponse save(SaveCatalogRequest saveCatalogRequest);
 
-    CatalogEntity findOneByName(String name);
+    AlreadyPresentCatalogResponse findById(Long catalogId);
 
-    Set<AlreadyPresentCatalogDto> findChildCatalogsByParentId(Long parentId);
+    Set<AlreadyPresentCatalogResponse> findAllByOriginalNameLikeIgnoreCase(String nameLike);
+
+    Set<AlreadyPresentCatalogResponse> findAllChildrenByParentCatalogId(Long parentId);
+
+    AlreadyPresentCatalogResponse updateById(UpdateCatalogRequest updateCatalogRequest);
 }

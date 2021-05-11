@@ -1,26 +1,25 @@
 package doc.mngmnt.service.impl.mapper.user;
 
-import doc.mngmnt.dto.user.AlreadyPresentUserDto;
-import doc.mngmnt.dto.user.SaveUserDto;
+import doc.mngmnt.dto.user.request.UpdateUserRequest;
 import doc.mngmnt.entity.user.UserEntity;
 import doc.mngmnt.service.api.mapper.Mapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AlreadyPresentUserDtoUserEntityMapper implements Mapper<AlreadyPresentUserDto, UserEntity> {
-    private final Mapper<SaveUserDto, UserEntity> saveUserDtoUserEntityMapper;
-
-    @Autowired
-    public AlreadyPresentUserDtoUserEntityMapper(Mapper<SaveUserDto, UserEntity> saveUserDtoUserEntityMapper) {
-        this.saveUserDtoUserEntityMapper = saveUserDtoUserEntityMapper;
-    }
+@RequiredArgsConstructor
+public class AlreadyPresentUserDtoUserEntityMapper implements Mapper<UpdateUserRequest, UserEntity> {
+    private final PasswordEncoder passwordEncoder;
 
     @Override
-    public UserEntity map(AlreadyPresentUserDto from) {
-        final UserEntity userEntity = saveUserDtoUserEntityMapper.map(from);
+    public UserEntity map(UpdateUserRequest from) {
+        final UserEntity userEntity = new UserEntity();
         userEntity.setId(from.getId());
-        userEntity.setPassword(from.getPassword());
+        userEntity.setPassword(passwordEncoder.encode(from.getPassword()));
+        userEntity.setUsername(from.getUsername());
+        userEntity.setEmail(from.getEmail());
+        userEntity.setPhoneNumber(from.getPhoneNumber());
         return userEntity;
     }
 }

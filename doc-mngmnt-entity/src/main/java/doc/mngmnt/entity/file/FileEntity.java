@@ -2,22 +2,18 @@ package doc.mngmnt.entity.file;
 
 import doc.mngmnt.entity.document.DocumentEntity;
 import doc.mngmnt.entity.document.DocumentVersionEntity;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "file"/* , schema = "public" */)
+@Table(name = "file")
 @Data
-@EqualsAndHashCode(of = {"id"})
-@NoArgsConstructor
-@AllArgsConstructor
+@Accessors(chain = true)
 public class FileEntity {
     @Id
     @Column(name = "id", updatable = false)
@@ -25,15 +21,20 @@ public class FileEntity {
     private Long id;
 
     @Basic(optional = false)
-    @Column(name = "path", nullable = false)
-    @NotNull
-    private String path;
+    @Column(name = "storage_file_id", unique = true, nullable = false)
+    private String storageFileId;
+
+    @Basic(optional = false)
+    @Column(name = "original_name", nullable = false)
+    private String originalName;
 
     @ManyToOne
-    @JoinColumn(name = "document_id", nullable = false)
+    @JoinColumn(name = "document_id", referencedColumnName = "id")
     private DocumentEntity documentId;
 
-    @ManyToOne
-    @JoinColumn(name = "document_version_id")
-    private DocumentVersionEntity documentVersionId;
+    @ManyToMany
+    @JoinTable(name = "document_version_file",
+        joinColumns = {@JoinColumn(name = "file_id", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "document_version_id", referencedColumnName = "id")})
+    private Set<DocumentVersionEntity> documentVersionEntities;
 }

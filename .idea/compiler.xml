@@ -7,7 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="doc-mngmnt-cloud-storage" />
         <module name="doc-mngmnt-service-impl" />
         <module name="doc-mngmnt-security" />
         <module name="doc-mngmnt-service-api" />
@@ -20,6 +19,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="doc-mngmnt-cloud-storage" target="11" />
       <module name="doc-mngmnt-ddl" target="11" />
       <module name="doc-mngmnt-firebase" target="11" />
       <module name="doc-mngmnt-tomcat" target="11" />

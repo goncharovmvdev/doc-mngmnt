@@ -1,5 +1,15 @@
 package doc.mngmnt.repository.test;
 
+import doc.mngmnt.entity.user.UserEntity;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+
+import java.sql.PreparedStatement;
+import java.util.Collection;
+import java.util.Objects;
 /*
 
 @SpringBootTest(classes = {JdbcConfig.class})
@@ -15,8 +25,7 @@ public class UserJdbcTest {
             Map<Long, DocumentEntity> documentsById = new HashMap<>();
 
             while (rs.next()) {
-                */
-/* IN \"user\" TABLE *//*
+ IN \"user\" TABLE
 
                 Long userId = rs.getLong("id");
                 String password = rs.getString("password");
@@ -28,14 +37,12 @@ public class UserJdbcTest {
                 String email = rs.getString("email");
                 String phoneNumber = rs.getString("phone_number");
 
-                */
-/* IN \"role\" TABLE *//*
+ IN \"role\" TABLE
 
                 Long roleId = rs.getLong("ROLID");
                 String roleName = rs.getString("ROLNAME");
 
-                */
-/* IN document TABLE *//*
+ IN document TABLE
 
                 Long documentId = rs.getLong("DOCID");
                 String documentTitle = rs.getString("DOCTITLE");
@@ -51,8 +58,7 @@ public class UserJdbcTest {
 
                 UserEntity currentUser = usersById.get(userId);
                 if (currentUser == null) {
-                    */
-/* CREATE NEW USER *//*
+ CREATE NEW USER
 
                     currentUser = new UserEntity();
                     currentUser.setId(userId);
@@ -69,16 +75,14 @@ public class UserJdbcTest {
 
                     usersById.put(currentUser.getId(), currentUser);
                 }
-                */
-/* ADD ROLE ENTITY *//*
+ ADD ROLE ENTITY
 
                 RoleEntity roleEntity = new RoleEntity();
                 roleEntity.setId(roleId);
                 roleEntity.setName(roleName);
                 currentUser.getRoles().add(roleEntity);
 
-                */
-/* ADD DOCUMENT ENTITIES *//*
+ ADD DOCUMENT ENTITIES
 
                 DocumentEntity currentDocument = documentsById.get(documentId);
                 if (currentDocument == null) {
@@ -89,16 +93,14 @@ public class UserJdbcTest {
                     currentDocument.setFiles(new HashSet<>());
                     documentsById.put(currentDocument.getId(), currentDocument);
                 }
-                */
-/* ADD FILE ENTITIES *//*
+ ADD FILE ENTITIES
 
                 FileEntity fileEntity = new FileEntity();
                 fileEntity.setId(fileId);
                 fileEntity.setPath(filePath);
                 currentDocument.getFiles().add(fileEntity);
 
-                */
-/* ADD DOCUMENT TYPES ENTITIES *//*
+ ADD DOCUMENT TYPES ENTITIES
 
                 DocumentTypeEntity documentTypeEntity = new DocumentTypeEntity();
                 documentTypeEntity.setId(documentTypeId);
@@ -122,10 +124,9 @@ public class UserJdbcTest {
         DatabasePopulatorUtils.execute(setupDataPopulator, jdbcTemplate.getDataSource());
     }
 
-    */
-/**
+*
      * 3 users are in db by default
-     *//*
+
 
     @Test
     public void testGetAllUsers() {
@@ -171,5 +172,5 @@ public class UserJdbcTest {
         }, keyHolder);
     }
 }
-*/
 
+*/

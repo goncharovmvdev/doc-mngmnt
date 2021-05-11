@@ -1,29 +1,29 @@
 package doc.mngmnt.entity.document;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.Set;
+
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.GenerationType.*;
 
 @Entity
 @Table(name = "document_type")
 @Data
-@EqualsAndHashCode(of = {"id"})
-@NoArgsConstructor
-@AllArgsConstructor
+@Accessors(chain = true)
+@EqualsAndHashCode(exclude = {"versionedDocuments"})
 public class DocumentTypeEntity {
     @Id
     @Column(name = "id", updatable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
     @Basic(optional = false)
-    @Column(name = "name", nullable = false)
-    @NotBlank
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
     @ManyToMany

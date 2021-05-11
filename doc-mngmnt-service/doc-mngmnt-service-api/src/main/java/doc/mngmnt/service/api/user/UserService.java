@@ -1,11 +1,12 @@
 package doc.mngmnt.service.api.user;
 
-import doc.mngmnt.dto.user.SaveUserDto;
-import doc.mngmnt.dto.user.AlreadyPresentUserDto;
+import doc.mngmnt.dto.user.request.SaveUserRequest;
+import doc.mngmnt.dto.user.request.UpdateUserRequest;
+import doc.mngmnt.dto.user.response.AlreadyPresentUserResponse;
 
 public interface UserService {
 
-    SaveUserDto register(SaveUserDto saveUserDto);
+    AlreadyPresentUserResponse register(SaveUserRequest saveUserRequest);
 
-    AlreadyPresentUserDto update(AlreadyPresentUserDto alreadyPresentUserDto);
+    AlreadyPresentUserResponse update(UpdateUserRequest updateUserRequest);
 }

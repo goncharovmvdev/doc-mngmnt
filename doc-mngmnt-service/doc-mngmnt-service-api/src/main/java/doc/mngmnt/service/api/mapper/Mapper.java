@@ -1,6 +1,6 @@
 package doc.mngmnt.service.api.mapper;
 
-public interface Mapper<F, T> {
+public interface Mapper<From, To> {
 
-    T map(F from);
+    To map(From from);
 }

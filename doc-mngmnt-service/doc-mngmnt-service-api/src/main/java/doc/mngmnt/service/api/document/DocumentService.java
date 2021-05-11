@@ -1,13 +1,18 @@
 package doc.mngmnt.service.api.document;
 
-import doc.mngmnt.dto.document.SaveDocumentDto;
-import doc.mngmnt.dto.document.AlreadyPresentDocumentDto;
+import doc.mngmnt.dto.document.request.SaveDocumentRequest;
+import doc.mngmnt.dto.document.request.UpdateDocumentRequest;
+import doc.mngmnt.dto.document.response.AlreadyPresentDocumentResponse;
+
+import java.util.Set;
 
 public interface DocumentService {
 
-    SaveDocumentDto save(SaveDocumentDto saveDocumentDto);
+    AlreadyPresentDocumentResponse save(SaveDocumentRequest saveDocumentRequest);
 
-    AlreadyPresentDocumentDto update(AlreadyPresentDocumentDto alreadyPresentDocumentDto);
+    AlreadyPresentDocumentResponse update(UpdateDocumentRequest updateDocumentRequest);
 
-    AlreadyPresentDocumentDto findById(Long id);
+    AlreadyPresentDocumentResponse findById(Long id);
+
+    void deleteById(Long id);
 }

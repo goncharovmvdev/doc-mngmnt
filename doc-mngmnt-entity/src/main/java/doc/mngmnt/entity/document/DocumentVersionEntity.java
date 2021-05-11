@@ -5,21 +5,21 @@ import doc.mngmnt.entity.file.FileEntity;
 import doc.mngmnt.entity.user.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.Set;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.EnumType.STRING;
+
+// TODO: 01.05.2021 в  DocEntity хранить версию, pk -> id + document_id (здесь)
 @Entity
 @Table(name = "document_version")
 @Data
-@EqualsAndHashCode(of = {"id"})
-@NoArgsConstructor
-@AllArgsConstructor
+@Accessors(chain = true)
 public class DocumentVersionEntity {
     @Id
     @Column(name = "id", updatable = false)
@@ -28,20 +28,20 @@ public class DocumentVersionEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "document_id", referencedColumnName = "id")
-    @NotNull
     private DocumentEntity document;
 
     @Basic(optional = false)
     @Column(name = "title", nullable = false)
-    @NotBlank
     private String title;
 
     @Basic(optional = false)
     @Column(name = "description", nullable = false)
-    @NotBlank
     private String description;
 
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany(cascade = {ALL})
+    @JoinTable(name = "document_version_file",
+        joinColumns = {@JoinColumn(name = "document_version_id", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "file_id", referencedColumnName = "id")})
     private Set<FileEntity> files;
 
     @ManyToMany
@@ -51,22 +51,21 @@ public class DocumentVersionEntity {
     private Set<DocumentTypeEntity> types;
 
     @Basic
-    @Column(name = "priority")
-    @Enumerated(value = EnumType.STRING)
-    private DocumentEntity.Importance importance;
+    @Column(name = "importance")
+    @Enumerated(STRING)
+    private Importance importance;
 
-    @ManyToOne
+    @ManyToOne(cascade = {MERGE})
     @JoinColumn(name = "catalog_id")
     private CatalogEntity catalog;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany
     @JoinTable(name = "user_document_version",
         joinColumns = {@JoinColumn(name = "document_version_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")})
-    @NotEmpty
-    private Set<UserEntity> ownerIds;
+    private Set<UserEntity> moderIds;
 
-    public DocumentVersionEntity(DocumentEntity documentEntity) {
+    DocumentVersionEntity(DocumentEntity documentEntity) {
         this.document = documentEntity;
         this.title = documentEntity.getTitle();
         this.description = documentEntity.getDescription();
@@ -74,6 +73,6 @@ public class DocumentVersionEntity {
         this.types = documentEntity.getTypes();
         this.importance = documentEntity.getImportance();
         this.catalog = documentEntity.getCatalog();
-        this.ownerIds = documentEntity.getOwnerIds();
+        this.moderIds = documentEntity.getModerIds();
     }
 }

@@ -2,6 +2,7 @@ package doc.mngmnt.security.user.details;
 
 import doc.mngmnt.entity.user.UserEntity;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +12,7 @@ import java.util.Collection;
 import static java.util.stream.Collectors.toSet;
 
 @Data
+@Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class ApplicationUserDetails implements UserDetails {

@@ -17,11 +17,6 @@
     <dependencies>
         <dependency>
             <groupId>doc-mngmnt</groupId>
-            <artifactId>doc-mngmnt-cloud-storage</artifactId>
-            <version>CURRENT</version>
-        </dependency>
-        <dependency>
-            <groupId>doc-mngmnt</groupId>
             <artifactId>doc-mngmnt-entity</artifactId>
             <version>CURRENT</version>
         </dependency>
@@ -38,9 +33,15 @@
         </dependency>
         <dependency>
             <groupId>doc-mngmnt</groupId>
+            <artifactId>doc-mngmnt-service</artifactId>
+            <version>CURRENT</version>
+        </dependency>
+        <dependency>
+            <groupId>doc-mngmnt</groupId>
             <artifactId>doc-mngmnt-security</artifactId>
             <version>CURRENT</version>
         </dependency>
+
         <!--Я в application.properties настраиваю постгрес -> нужен его драйвер нужен драйвер -->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -55,6 +56,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>doc-mngmnt-service</groupId>
+            <artifactId>doc-mngmnt-service-impl</artifactId>
+            <version>CURRENT</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>

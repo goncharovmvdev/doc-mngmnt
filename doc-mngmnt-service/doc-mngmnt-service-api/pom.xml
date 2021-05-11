@@ -25,5 +25,18 @@
             <artifactId>doc-mngmnt-dto</artifactId>
             <version>CURRENT</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.oauth-client</groupId>
+            <artifactId>google-oauth-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-drive</artifactId>
+        </dependency>
     </dependencies>
 </project>

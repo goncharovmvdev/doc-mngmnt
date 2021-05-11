@@ -3,15 +3,17 @@ package doc.mngmnt.repository.user;
 import doc.mngmnt.entity.user.UserEntity;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface UserRepository extends JpaRepository<UserEntity, Long> {
+import java.util.Set;
 
-    @EntityGraph(attributePaths = {"roles"})
+public interface UserRepository extends JpaRepository<UserEntity, Long>, JpaSpecificationExecutor<UserEntity> {
+
     UserEntity findOneByUsername(String username);
 
     UserEntity findOneByEmail(String email);
 
-    UserEntity findOneByEmailOrUsername(String email, String username);
+    Set<UserEntity> findAllByEmailOrUsername(String email, String username);
 
     void deleteByUsername(String username);
 }

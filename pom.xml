@@ -15,7 +15,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>doc-mngmnt-cloud-storage</module>
         <module>doc-mngmnt-dto</module>
         <module>doc-mngmnt-entity</module>
         <module>doc-mngmnt-parent</module>
@@ -26,6 +25,5 @@
         <module>doc-mngmnt-security</module>
         <module>doc-mngmnt-service</module>
     </modules>
-
 
 </project>

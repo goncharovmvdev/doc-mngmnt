@@ -1,23 +1,18 @@
 package doc.mngmnt.entity.security;
 
 import doc.mngmnt.entity.user.UserEntity;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "\"role\""/* , schema = "public" */)
+@Table(name = "\"role\"")
 @Data
-@EqualsAndHashCode(of = {"id"})
-@NoArgsConstructor
-@AllArgsConstructor
+@Accessors(chain = true)
 public class RoleEntity {
     @Id
     @Column(name = "id", updatable = false)
@@ -26,10 +21,9 @@ public class RoleEntity {
 
     @Basic(optional = false)
     @Column(name = "name", unique = true, nullable = false)
-    @NotBlank
     private String name;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany
     @JoinTable(name = "user_role",
         joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")})
