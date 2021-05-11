@@ -16,12 +16,7 @@ public interface GoogleDriveFileService {
      * @param googleDriveParentCatalogId <strong>Google Drive</strong> parent catalog id. May be <code>null</code>
      * @return file's id
      */
-    String createCatalog(String catalogName, String googleDriveParentCatalogId);
-
-    /**
-     * @return <code>Map<String, String></code>, containing google drive ids as keys and original file names av values.
-     */
-    Map<String, String> createDocument(String documentName, String googleDriveCatalogId, Set<MultipartFile> multipartFiles);
+    String createFolder(String catalogName, String googleDriveParentCatalogId);
 
     /**
      * @return file's id

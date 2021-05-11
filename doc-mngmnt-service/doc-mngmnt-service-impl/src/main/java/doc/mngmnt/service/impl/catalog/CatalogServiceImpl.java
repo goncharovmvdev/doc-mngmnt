@@ -46,7 +46,7 @@ public class CatalogServiceImpl implements CatalogService {
                 .orElseThrow()
                 .getStorageCatalogId();
         }
-        final String justCreatedGoogleDriveCatalogId = googleDriveFileService.createCatalog(
+        final String justCreatedGoogleDriveCatalogId = googleDriveFileService.createFolder(
             saveCatalogRequest.getOriginalName(),
             googleDriveCatalogId
         );

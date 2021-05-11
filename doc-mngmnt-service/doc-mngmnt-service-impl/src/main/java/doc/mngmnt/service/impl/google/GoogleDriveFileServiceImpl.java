@@ -13,7 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 @Transactional
@@ -34,7 +35,7 @@ public class GoogleDriveFileServiceImpl implements GoogleDriveFileService {
 
     @Override
     @SneakyThrows
-    public String createCatalog(String catalogName, String parentCatalogId) {
+    public String createFolder(String catalogName, String parentCatalogId) {
         File fileMetadata = new File()
             .setName(catalogName)
             .setMimeType("application/vnd.google-apps.folder");
@@ -46,19 +47,6 @@ public class GoogleDriveFileServiceImpl implements GoogleDriveFileService {
             .setFields("id, name")
             .execute();
         return savedCatalogMetadata.getId();
-    }
-
-    @Override
-    public Map<String, String> createDocument(String documentName, String googleDriveCatalogId, Set<MultipartFile> multipartFiles) {
-        Map<String, String> googleIdsToOriginalNames = new HashMap<>();
-        /* Basically, just create new directory in google drive */
-        final String justCreatedGoogleDriveDocumentId = this.createCatalog(documentName, googleDriveCatalogId);
-        googleIdsToOriginalNames.put(justCreatedGoogleDriveDocumentId, documentName);
-        for (MultipartFile multipartFile : multipartFiles) {
-            final String justCreatedGoogleDriveFileId = this.uploadFile(multipartFile, justCreatedGoogleDriveDocumentId);
-            googleIdsToOriginalNames.put(justCreatedGoogleDriveFileId, multipartFile.getOriginalFilename());
-        }
-        return googleIdsToOriginalNames;
     }
 
     @Override

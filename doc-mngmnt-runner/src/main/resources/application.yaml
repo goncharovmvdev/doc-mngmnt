@@ -7,4 +7,29 @@ spring:
     username: postgres
     password: 102030AaBb
   jpa:
+    show-sql: true
+    open-in-view: false
+    database: postgresql
+    #debug
     generate-ddl: true
+  cache:
+    type: redis
+  redis:
+    url:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: docmngmntsup@gmail.com
+    password: sssdbzkzpxofpdbm
+    test-connection: true
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.debug: true
+
+  flyway:
+    #debug
+    enabled: false
+logging:
+  level:
+    org.springframework: debug

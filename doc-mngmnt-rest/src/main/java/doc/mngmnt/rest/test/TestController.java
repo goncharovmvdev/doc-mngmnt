@@ -30,14 +30,14 @@ public class TestController {
 
     @PostMapping("create-folder")
     public ResponseEntity<String> tet() {
-        googleDriveFileService.createCatalog("catalog", null);
+        googleDriveFileService.createFolder("catalog", null);
         return ResponseEntity.ok("");
     }
 
     @PostMapping("create-second")
     public ResponseEntity<String> tot() {
-        final String catalogId = googleDriveFileService.createCatalog("second-catalog", null);
-        googleDriveFileService.createCatalog("third-catalog", catalogId);
+        final String catalogId = googleDriveFileService.createFolder("second-catalog", null);
+        googleDriveFileService.createFolder("third-catalog", catalogId);
         return ResponseEntity.ok("");
     }
 
@@ -54,7 +54,8 @@ public class TestController {
     }
 
     @PostMapping("create-catalog")
-    public ResponseEntity<AlreadyPresentCatalogResponse> createCatalog(@RequestBody @Valid SaveCatalogRequest saveCatalogRequest) {
+    public ResponseEntity<AlreadyPresentCatalogResponse> createCatalog(@ModelAttribute @Valid SaveCatalogRequest saveCatalogRequest) {
+        log.info("QADS - IN");
         final AlreadyPresentCatalogResponse save = catalogService.save(saveCatalogRequest);
         return ResponseEntity.ok(save);
     }

@@ -38,20 +38,19 @@ public class DocumentServiceImpl implements DocumentService {
 
     @Override
     public AlreadyPresentDocumentResponse save(SaveDocumentRequest saveDocumentRequest) {
-        final Map<String, String> googleIdsToOriginalFileNames = googleDriveFileService.createDocument(
+        /* CREATE DOCUMENT, NOT CATALOG */
+        final String googleDriveDocumentId = googleDriveFileService.createFolder(
             saveDocumentRequest.getTitle(),
-            this.getGoogleDriveCatalogId(saveDocumentRequest.getCatalogId()),
-            saveDocumentRequest.getSaveFiles()
+            this.getGoogleDriveCatalogId(saveDocumentRequest.getCatalogId())
         );
         DocumentEntity documentEntityToSave = saveDocumentRequestDocumentEntityMapper.map(saveDocumentRequest);
         /* Set google drive id to this document manually */
-        documentEntityToSave.setStorageDocumentId(
-            this.getGoogleDriveIdFromGoogleIdsToOriginalNames(
-                googleIdsToOriginalFileNames,
-                documentEntityToSave.getTitle()
-            )
+        documentEntityToSave.setStorageDocumentId(googleDriveDocumentId);
+        /* Save files, create entities and assign them to current document */
+        this.uploadNewFilesAndAssignThemToDocumentEntity(
+            saveDocumentRequest.getSaveFiles(),
+            documentEntityToSave
         );
-        /* Set google drive id to each file manually */
         final DocumentEntity savedDocumentEntity = documentRepository.save(documentEntityToSave);
         return documentEntityAlreadyPresentDocumentDtoMapper.map(savedDocumentEntity);
     }
@@ -64,21 +63,18 @@ public class DocumentServiceImpl implements DocumentService {
         final DocumentEntity documentStorageId = documentRepository.findById(updateDocumentRequest.getId())
             .orElseThrow();
 
-        /* Upload files and get configured entities */
-        final Set<FileEntity> fileEntities = this.uploadNewFileAndGetEntities(
-            updateDocumentRequest.getUploadNewFiles(),
-            documentStorageId
-        );
+
         /* Rename files */
         this.renameFiles(updateDocumentRequest.getId(), updateDocumentRequest.getRenameFilesMap());
         /* Delete(detach) files */
         this.detachFiles(updateDocumentRequest.getDeleteFileIds());
 
         DocumentEntity documentEntity = updateDocumentRequestDocumentEntityMapper.map(updateDocumentRequest);
-        /* Add configured file entities manually */
-        for (FileEntity file : fileEntities) {
-            documentEntity.addFile(file);
-        }
+        this.uploadNewFilesAndAssignThemToDocumentEntity(
+            updateDocumentRequest.getUploadNewFiles(),
+            documentStorageId
+        );
+
         final DocumentEntity savedDocumentEntity = documentRepository.save(documentEntity);
 
         return documentEntityAlreadyPresentDocumentDtoMapper.map(savedDocumentEntity);
@@ -121,7 +117,7 @@ public class DocumentServiceImpl implements DocumentService {
             .orElseThrow();
     }
 
-    private Set<FileEntity> uploadNewFileAndGetEntities(Set<MultipartFile> uploadNewFiles, DocumentEntity documentEntity) {
+    private void uploadNewFilesAndAssignThemToDocumentEntity(Set<MultipartFile> uploadNewFiles, DocumentEntity documentEntity) {
         Set<FileEntity> configuredFileEntities = new HashSet<>();
         if (uploadNewFiles != null) {
             for (MultipartFile multipartFile : uploadNewFiles) {
@@ -134,7 +130,7 @@ public class DocumentServiceImpl implements DocumentService {
                 );
             }
         }
-        return configuredFileEntities;
+        documentEntity.setFiles(configuredFileEntities);
     }
 
     private void detachFiles(Set<Long> deleteFileIds) {

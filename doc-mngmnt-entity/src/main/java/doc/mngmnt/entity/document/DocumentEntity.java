@@ -66,7 +66,7 @@ public class DocumentEntity {
     private Set<UserEntity> moderIds;
 
     // TODO: 11.05.2021 ???????????
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "id", cascade = {PERSIST, MERGE})
     private Set<DocumentVersionEntity> versionedDocuments = new HashSet<>();
 
     @Basic(optional = false)
